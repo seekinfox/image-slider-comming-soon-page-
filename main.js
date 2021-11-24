@@ -1,31 +1,25 @@
-(function () {
-    var body = document.querySelector(".container"),
-        left = document.getElementById("left"),
-        right = document.getElementById("right"),
-        images = ['./image/one.jpg',
-                 './image/two.jpg', './image/three.jpg',
-                  './image/four.jpg', './image/five.jpg',
-                  './image/six.jpg', './image/seven.jpg',
-                  './image/eight.jpg', './image/nine.jpg',
-                  './image/ten.jpg', './image/eleven.jpg', './image/twelve.jpg', './image/therteen.jpg',
-                  './image/fourteen.jpg', './image/fifteen.jpg', './image/sixteen.jpg'],
-        count = 0;
-    body.style.background = "url('" + images[count] + "')";
-    left.addEventListener("click", () => {
-        count--;
-        if (count < 0) {
-            count = images.length - 1;
-        }
-        body.style.background = "url('" + images[count] + "') center ";
-        body.style.backgroundSize = "cover";
-    })
-    right.addEventListener("click", () => {
-        count++;
-        if (count > images.length - 1) {
-            count = 0;
-        }
-        body.style.background = "url('" + images[count] + "') center ";
-        body.style.backgroundSize = "cover";
-    })
+var button = document.getElementById("button"),
+    image = document.getElementById("image"),
+    gallery = ['./images/one.jpg',
+              './images/two.jpg',
+              './images/three.jpg',
+              './images/five.jpg',
+              './images/six.jpg',
+              './images/seven.jpg',
+              './images/eight.jpg',
+              './images/nine.jpg',
+              './images/ten.jpg',
+              './images/eleven.jpg'],
+    memo = document.getElementById("memo");
 
-})()
+image.style.background = "url('./images/main-hero.jpg')";
+image.style.backgroundRepeat = "no-repeat";
+image.style.backgroundSize = "cover";
+memo.innerHTML = "We are a family";
+
+button.addEventListener('click', () => {
+    var index = parseInt(Math.random() * gallery.length)
+    image.style.background = "url('" + gallery[index] + "')";
+    image.style.backgroundSize = "cover";
+    button.classList.toggle("toggle");
+});
